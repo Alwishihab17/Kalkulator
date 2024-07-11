@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Sederhana</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            padding: 150px;
+            background-color: grey;
+        }
+        .calculator {
+            background-color: black;
+            color: white;
+            display: inline-block;
+            padding: 20px;
+            border: 2px solid #000;
+            border-radius: 10px;
+            box-shadow: 5px 5px 5px white;
+        }
+        .calculator:hover {
+            background-color: white;
+            color: black;
+            display: inline-block;
+            padding: 20px;
+            border: 2px solid white;
+            border-radius: 10px;
+            box-shadow: 5px 5px 5px black;
+        }
+        .input-field {
+            margin-bottom: 10px;
+        }
+        button {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h2>Kalkulator Sederhana</h2>
+        <div class="input-field">
+            <input type="number" id="num1" placeholder="Masukkan angka pertama">
+        </div>
+        <div class="input-field">
+            <input type="number" id="num2" placeholder="Masukkan angka kedua">
+        </div>
+        <div class="klik">
+            <button onclick="calculate('penambahan')">+</button>
+            <button onclick="calculate('pengurangan')">-</button>
+            <button onclick="calculate('perkalian')">x</button>
+            <button onclick="calculate('pembagian')">:</button>
+        </div>
+        <h3>Hasil: <span id="result"></span></h3>
+    </div>
+
+    <script>
+        function calculate(operation) {
+            var num1 = parseFloat(document.getElementById('num1').value);
+            var num2 = parseFloat(document.getElementById('num2').value);
+            var result;
+
+            if (isNaN(num1) || isNaN(num2)) {
+                result = "Minim Literasi";
+            } else {
+                switch (operation) {
+                    case 'penambahan':
+                        result = num1 + num2;
+                        break;
+                    case 'pengurangan':
+                        result = num1 - num2;
+                        break;
+                    case 'perkalian':
+                        result = num1 * num2;
+                        break;
+                    case 'pembagian':
+                        if (num2 === 0) {
+                            result = "Tidak dapat membagi dengan nol.";
+                        } else {
+                            result = num1 / num2;
+                        }
+                        break;
+                    default:
+                        result = "Operasi tidak dikenal.";
+                }
+            }
+
+            document.getElementById('result').innerText = result;
+        }
+    </script>
+</body>
+</html>
